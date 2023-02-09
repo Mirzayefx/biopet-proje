@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BioPet</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
+    <link rel="icon" href="/imgs/head_logo.png" />
+    <script
+      src="https://kit.fontawesome.com/cdb3dc47c3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+  </head>
+  <body id="index_load">
+    <!-- loading io  -->
+    <div class="loader_container">
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+<div class="up_container">
+<i class="fas fa-level-up-alt go_up_icon"></i>
+</div>
+
+    <header>
+      <div id="navbar">
+        <div class="header_head_container">
+          <div class="container header_flex_container">
+            <img class="logo" src="./imgs/head_logo.png" alt="head_logo" />
+            <div class="header_icons_container">
+              <div class="inp_icon">
+                <input type="text" />
+                <svg
+                  width="15"
+                  height="16"
+                  viewBox="0 0 15 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <rect
+                    x="0.108398"
+                    y="0.70105"
+                    width="14.8916"
+                    height="14.8916"
+                    fill="url(#pattern0)"
+                  />
+                  <defs>
+                    <pattern
+                      id="pattern0"
+                      patternContentUnits="objectBoundingBox"
+                      width="1"
+                      height="1"
+                    >
+                      <use
+                        xlink:href="#image0_1_30"
+                        transform="scale(0.00195312)"
+                      />
+                    </pattern>
+                    <image
+                      id="image0_1_30"
+                      width="512"
+                      height="512"
+                      xlink:href="data:image/png;base64,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"
+                    />
+                  </defs>
+                </svg>
+              </div>
+              <div class="user_profile">
+                <p></p>
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </div>
+              <button class="header_deliver">
+                Çatdırılma
+                <svg
+                  width="29"
+                  height="16"
+                  viewBox="0 0 29 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.13164 7.78243V13.5319C4.13164 13.8243 4.41272 14.0669 4.75167 14.0669H6.82671C7.16566 15.1797 8.33132 16 9.72019 16C11.1091 16 12.283 15.1797 12.6137 14.0669H20.6079C20.9469 15.1797 22.1126 16 23.5014 16C24.8903 16 26.0642 15.1797 26.3949 14.0669H27.9326C28.2715 14.0669 28.5526 13.8243 28.5526 13.5319V8.48863C28.5526 8.3745 28.5113 8.2675 28.4369 8.1819L26.2874 5.56398C26.1717 5.42131 25.9815 5.33571 25.7831 5.33571H21.3024V3.65225C21.3024 3.35979 21.0213 3.11725 20.6823 3.11725H9.25723C8.82734 1.34106 7.00032 0 4.8178 0C2.31288 0 0.279175 1.75479 0.279175 3.91618C0.279175 5.87071 1.95739 7.4971 4.13164 7.78243ZM9.72019 14.93C8.75294 14.93 7.96757 14.2523 7.96757 13.4177C7.96757 12.5831 8.75294 11.9055 9.72019 11.9055C10.6874 11.9055 11.4728 12.5831 11.4728 13.4177C11.4728 14.2523 10.6792 14.93 9.72019 14.93ZM23.5014 14.93C22.5342 14.93 21.7488 14.2523 21.7488 13.4177C21.7488 12.5831 22.5342 11.9055 23.5014 11.9055C24.4687 11.9055 25.254 12.5831 25.254 13.4177C25.254 14.2523 24.4687 14.93 23.5014 14.93ZM27.3125 8.66696V8.75256H23.9396V6.41284H25.4607L27.3125 8.66696ZM22.6995 6.41284V9.28756C22.6995 9.58003 22.9806 9.82256 23.3195 9.82256H27.3125V12.9969H26.4528C26.2213 11.77 24.9812 10.8355 23.5014 10.8355C22.6334 10.8355 21.848 11.1565 21.3024 11.6701V6.41284H22.6995ZM20.0623 13.004H12.6715C12.4401 11.7771 11.2 10.8426 9.72019 10.8426C8.24038 10.8426 7.00032 11.7771 6.76884 13.004H5.3717V7.80383C7.51288 7.57557 9.19109 6.06331 9.3399 4.19438H20.0623V13.004ZM4.8178 1.07713C6.63656 1.07713 8.11637 2.35399 8.11637 3.92332C8.11637 5.49264 6.63656 6.7695 4.8178 6.7695C2.99905 6.7695 1.51924 5.49264 1.51924 3.92332C1.51924 2.35399 2.99905 1.07713 4.8178 1.07713Z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+              <a href="tel:+994772776688">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2.16162 1.44014L2.16182 1.43994L2.53121 1.07072C2.62536 0.975815 2.73744 0.900558 2.86094 0.849337C2.98435 0.798159 3.11668 0.772005 3.25027 0.772393M2.16162 1.44014L1.23147 6.3455C1.73953 8.45285 3.03665 10.6094 4.85905 12.4327C6.68153 14.256 8.83618 15.5526 10.9423 16.0627L10.9426 16.0628C12.9219 16.5408 14.7043 16.2732 15.8449 15.1319L16.2147 14.7618L16.2148 14.7616C16.4051 14.5711 16.5119 14.3128 16.5119 14.0436C16.5119 13.7743 16.4051 13.5161 16.2148 13.3255L16.2147 13.3254L14.0903 11.1991L14.0901 11.1989C13.8997 11.0085 13.6414 10.9015 13.3721 10.9015C13.1027 10.9015 12.8444 11.0085 12.654 11.1989L12.6539 11.1991L11.063 12.791L11.0629 12.7911C11.0424 12.8116 11.0161 12.825 10.9876 12.8294C10.9591 12.8339 10.9299 12.8291 10.9043 12.8158L10.9043 12.8158C9.65169 12.1677 8.37783 11.2177 7.22593 10.065C6.07431 8.91262 5.12689 7.63866 4.47728 6.38468C4.46395 6.35891 4.45914 6.32952 4.46358 6.30078C4.46802 6.27213 4.48141 6.24568 4.50177 6.22522C4.50178 6.22522 4.50178 6.22521 4.50179 6.22521C4.50184 6.22515 4.50189 6.2251 4.50194 6.22505L6.09307 4.63325L6.09325 4.63307C6.28353 4.44251 6.39034 4.18422 6.39034 3.91499C6.39034 3.64576 6.28353 3.38748 6.09325 3.19692L6.09315 3.19682L3.96931 1.07108C3.96912 1.0709 3.96894 1.07071 3.96875 1.07053C3.87444 0.975744 3.76227 0.900585 3.63873 0.849407C3.51558 0.798393 3.38356 0.77222 3.25027 0.772393M2.16162 1.44014C1.02117 2.58137 0.753841 4.36551 1.23145 6.34543L2.16162 1.44014ZM3.25027 0.772393C3.25096 0.772395 3.25165 0.772398 3.25235 0.772401L3.24986 1.27239L3.25027 0.772393ZM10.882 16.3295L10.8788 16.3287C8.7608 15.8174 6.54951 14.5103 4.66866 12.6265C2.78744 10.7423 1.47955 8.52884 0.968541 6.41143L0.968515 6.41132C0.430038 4.1823 0.835262 2.38176 1.96941 1.24683L2.33889 0.877094C2.33894 0.877047 2.33898 0.877 2.33903 0.876953C2.58085 0.635526 2.90842 0.5 3.24986 0.5C3.59138 0.5 3.91901 0.635579 4.16084 0.877094L6.28555 3.00285C6.52702 3.24474 6.66271 3.57273 6.66271 3.91478C6.66271 4.25683 6.52702 4.58482 6.28555 4.82671L5.03041 6.08229L4.76087 6.35193L4.94954 6.68322C5.57591 7.7831 6.42289 8.87578 7.41813 9.87172C8.41341 10.8677 9.50618 11.7157 10.6048 12.3424L10.9365 12.5316L11.2063 12.2615L12.4613 11.0053L12.1076 10.6519L12.4613 11.0053C12.5809 10.8855 12.7229 10.7906 12.8791 10.7258C13.0353 10.661 13.2028 10.6277 13.3719 10.6277C13.541 10.6277 13.7084 10.661 13.8646 10.7258C14.0209 10.7906 14.1628 10.8855 14.2824 11.0053L14.2825 11.0053L16.4072 13.1315C16.4073 13.1316 16.4073 13.1316 16.4073 13.1316C16.6487 13.3734 16.7844 13.7012 16.7844 14.0431C16.7844 14.3851 16.6487 14.713 16.4072 14.9548L16.0373 15.3246L16.0367 15.3251C15.2341 16.1298 14.1069 16.5627 12.7312 16.563C12.1078 16.5583 11.4871 16.4799 10.882 16.3295Z"
+                  fill="black"
+                  stroke="black"
+                />
+              </svg>
+            </a>
+              <!-- LIKED ICON  -->
+              <a class="liked_icon" href="./liked.html">
+                <svg
+                  width="20"
+                  height="15"
+                  viewBox="0 0 20 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17.7027 7.72466C19.6566 5.95615 19.6566 3.08052 17.7027 1.32638C15.7488 -0.442128 12.5718 -0.442128 10.6179 1.32638L9.66475 2.18907L8.71164 1.32638C6.75776 -0.442128 3.58071 -0.442128 1.64272 1.32638C0.689602 2.17469 0.181274 3.32495 0.181274 4.53271C0.181274 5.74047 0.705487 6.87635 1.64272 7.73904L9.66475 15L17.7027 7.72466ZM1.43621 4.53271C1.43621 3.62689 1.81745 2.77858 2.53229 2.14594C3.26301 1.48454 4.21612 1.15385 5.16924 1.15385C6.12235 1.15385 7.07546 1.48454 7.80618 2.14594L9.66475 3.8138L11.5233 2.13156C12.9848 0.808771 15.3517 0.808771 16.7972 2.13156C17.4962 2.7642 17.8933 3.61251 17.8933 4.51833C17.8933 5.42416 17.5121 6.27247 16.7972 6.9051L9.66475 13.3753L2.53229 6.91948C1.83334 6.27247 1.43621 5.42416 1.43621 4.53271Z"
+                    fill="black"
+                  />
+                </svg>
+              </a>
+              <!-- SHOP ICON  -->
+              <a class="sebet_icon" href="./sebet.html">
+                <svg
+                  width="22"
+                  height="19"
+                  viewBox="0 0 22 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0.819496 0.265747H3.33801C3.36181 0.265747 3.38203 0.276642 3.40517 0.279034C3.45347 0.28387 3.49862 0.291736 3.54388 0.306511C3.58177 0.318787 3.61597 0.333934 3.6505 0.352323C3.69023 0.373528 3.72606 0.396541 3.76069 0.425187C3.79256 0.451441 3.81961 0.479396 3.84595 0.510912C3.87311 0.543385 3.89631 0.576442 3.91691 0.61407C3.93821 0.652708 3.95317 0.692355 3.96623 0.735191C3.97333 0.758416 3.98867 0.777071 3.99323 0.801465L4.37466 2.84543L20.6741 3.77938C20.7365 3.77512 20.7916 3.78405 20.8614 3.79043C21.2235 3.82274 21.4923 4.13397 21.4654 4.48941C21.4633 4.5162 21.4598 4.54214 21.4546 4.56765L20.3189 10.6408C20.0592 11.5826 19.2591 12.5333 18.0558 12.5333H6.18267L6.43689 13.8955H16.4275C17.6924 13.8955 18.7219 14.9049 18.7219 16.1451C18.7219 17.3858 17.6924 18.3951 16.4275 18.3951C15.1626 18.3951 14.1332 17.3858 14.1332 16.1451C14.1332 15.8071 14.2151 15.4895 14.3519 15.2016H8.21704C8.35385 15.4895 8.43575 15.8071 8.43575 16.1451C8.43575 17.3858 7.40632 18.3951 6.14142 18.3951C4.87653 18.3951 3.84709 17.3858 3.84709 16.1451C3.84709 15.2632 4.37233 14.5059 5.12782 14.1373L2.7828 1.57188H0.819496C0.451778 1.57188 0.153442 1.27936 0.153442 0.918813C0.153442 0.558266 0.451778 0.265747 0.819496 0.265747ZM5.46225 8.67285L8.28474 8.71632L8.13102 7.11247L5.1547 7.02499L5.46225 8.67285ZM19.5629 7.44851L16.7424 7.3656L16.5579 8.84366L19.2945 8.88581L19.5629 7.44851ZM15.8514 7.3394L12.7512 7.24831V8.78504L15.6653 8.82995L15.8514 7.3394ZM12.7512 6.37676L15.9598 6.47109L16.1648 4.82939L12.7512 4.63371V6.37676ZM11.8632 4.58279L8.76358 4.40507L8.9418 6.26478L11.8632 6.35066V4.58279ZM12.7512 9.65601V11.2271H15.366L15.5568 9.69922L12.7512 9.65601ZM11.8632 9.64235L9.26165 9.60233L9.41738 11.2271H11.8632V9.64235ZM11.8632 8.77138V7.22221L9.02554 7.13877L9.17807 8.73004L11.8632 8.77138ZM4.99117 6.14865L8.04728 6.23847L7.86667 4.35368L4.62144 4.16761L4.99117 6.14865ZM17.0528 4.88031L16.8509 6.49724L19.7248 6.58174C19.8459 5.93665 19.9423 5.43532 20.0245 5.05064L17.0528 4.88031ZM19.0206 10.353L19.1324 9.75428L16.4493 9.71298L16.2603 11.2271H18.0558C18.6265 11.2271 18.9443 10.6208 19.0206 10.353ZM8.52535 11.2271L8.36832 9.58857L5.62524 9.54631L5.93892 11.2271H8.52535ZM15.4653 16.1451C15.4653 16.6655 15.8968 17.089 16.4275 17.089C16.9583 17.089 17.3898 16.6655 17.3898 16.1451C17.3898 15.6247 16.9583 15.2016 16.4275 15.2016C15.8968 15.2016 15.4653 15.6247 15.4653 16.1451ZM6.14142 17.089C6.67218 17.089 7.10365 16.6655 7.10365 16.1451C7.10365 15.6247 6.67218 15.2016 6.14142 15.2016C5.61066 15.2016 5.1792 15.6247 5.1792 16.1451C5.1792 16.6655 5.61066 17.089 6.14142 17.089Z"
+                    fill="#050505"
+                  />
+                </svg>
+                <span class="count"></span>
+              </a>
+
+              <select name="" id="">
+                <option value="En">En</option>
+                <option value="Az">Az</option>
+              </select>
+              <!-- <label for="nav_check">
+              <i class="fas fa-bars"></i>
+            </label> -->
+              <i class="fas fa-bars bars_icon"></i>
+            </div>
+          </div>
+        </div>
+
+        <nav>
+          <div class="nav_container">
+            <div class="container">
+              <!-- <input id="nav_check" type="checkbox"> -->
+              <ul class="nav_list">
+                <li>
+                  <a href="#"
+                    >Servis
+                    <svg
+                      width="16"
+                      height="8"
+                      viewBox="0 0 16 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <mask id="path-1-inside-1_140_85" fill="white">
+                        <path
+                          d="M15.03 0L16 0.8625L8 8L0 0.8625L0.965 0L8 6.27083L15.03 0Z"
+                        />
+                      </mask>
+                      <path
+                        d="M15.03 0L16 0.8625L8 8L0 0.8625L0.965 0L8 6.27083L15.03 0Z"
+                        fill="#4769AC"
+                      />
+                      <path
+                        d="M15.03 0L21.6748 -7.47303L15.0194 -13.3909L8.37336 -7.46251L15.03 0ZM16 0.8625L22.6574 8.32436L31.0351 0.849873L22.6448 -6.61053L16 0.8625ZM8 8L1.34262 15.4619L8 21.4015L14.6574 15.4619L8 8ZM0 0.8625L-6.66399 -6.59345L-15.0135 0.86916L-6.65738 8.32436L0 0.8625ZM0.965 0L7.61901 -7.46487L0.956027 -13.4041L-5.69899 -7.45595L0.965 0ZM8 6.27083L1.34599 13.7357L8.00237 19.669L14.6566 13.7333L8 6.27083ZM8.38517 7.47303L9.35517 8.33553L22.6448 -6.61053L21.6748 -7.47303L8.38517 7.47303ZM9.34262 -6.59936L1.34262 0.538142L14.6574 15.4619L22.6574 8.32436L9.34262 -6.59936ZM14.6574 0.538142L6.65738 -6.59936L-6.65738 8.32436L1.34262 15.4619L14.6574 0.538142ZM6.66399 8.31845L7.62899 7.45595L-5.69899 -7.45595L-6.66399 -6.59345L6.66399 8.31845ZM-5.68901 7.46487L1.34599 13.7357L14.654 -1.19403L7.61901 -7.46487L-5.68901 7.46487ZM14.6566 13.7333L21.6866 7.46251L8.37336 -7.46251L1.34336 -1.19168L14.6566 13.7333Z"
+                        fill="white"
+                        mask="url(#path-1-inside-1_140_85)"
+                      />
+                    </svg>
+                  </a>
+
+                  <ul class="drop_down">
+                    <li><a href="">item 1</a></li>
+                    <li><a href="">item 2</a></li>
+                    <li><a href="">item 3</a></li>
+                    <li><a href="">item 4</a></li>
+                    <li><a href="">item 5</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#"
+                    >Heyvan məhsulları
+                    <svg
+                      width="16"
+                      height="8"
+                      viewBox="0 0 16 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <mask id="path-1-inside-1_140_85" fill="white">
+                        <path
+                          d="M15.03 0L16 0.8625L8 8L0 0.8625L0.965 0L8 6.27083L15.03 0Z"
+                        />
+                      </mask>
+                      <path
+                        d="M15.03 0L16 0.8625L8 8L0 0.8625L0.965 0L8 6.27083L15.03 0Z"
+                        fill="#4769AC"
+                      />
+                      <path
+                        d="M15.03 0L21.6748 -7.47303L15.0194 -13.3909L8.37336 -7.46251L15.03 0ZM16 0.8625L22.6574 8.32436L31.0351 0.849873L22.6448 -6.61053L16 0.8625ZM8 8L1.34262 15.4619L8 21.4015L14.6574 15.4619L8 8ZM0 0.8625L-6.66399 -6.59345L-15.0135 0.86916L-6.65738 8.32436L0 0.8625ZM0.965 0L7.61901 -7.46487L0.956027 -13.4041L-5.69899 -7.45595L0.965 0ZM8 6.27083L1.34599 13.7357L8.00237 19.669L14.6566 13.7333L8 6.27083ZM8.38517 7.47303L9.35517 8.33553L22.6448 -6.61053L21.6748 -7.47303L8.38517 7.47303ZM9.34262 -6.59936L1.34262 0.538142L14.6574 15.4619L22.6574 8.32436L9.34262 -6.59936ZM14.6574 0.538142L6.65738 -6.59936L-6.65738 8.32436L1.34262 15.4619L14.6574 0.538142ZM6.66399 8.31845L7.62899 7.45595L-5.69899 -7.45595L-6.66399 -6.59345L6.66399 8.31845ZM-5.68901 7.46487L1.34599 13.7357L14.654 -1.19403L7.61901 -7.46487L-5.68901 7.46487ZM14.6566 13.7333L21.6866 7.46251L8.37336 -7.46251L1.34336 -1.19168L14.6566 13.7333Z"
+                        fill="white"
+                        mask="url(#path-1-inside-1_140_85)"
+                      />
+                    </svg>
+                  </a>
+                  <ul class="drop_down">
+                    <li><a href="">item 1</a></li>
+                    <li><a href="">item 2</a></li>
+                    <li><a href="">item 3</a></li>
+                    <li><a href="">item 4</a></li>
+                    <li><a href="">item 5</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#"
+                    >Aptek ləvazımatları
+                    <svg
+                      width="16"
+                      height="8"
+                      viewBox="0 0 16 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <mask id="path-1-inside-1_140_85" fill="white">
+                        <path
+                          d="M15.03 0L16 0.8625L8 8L0 0.8625L0.965 0L8 6.27083L15.03 0Z"
+                        />
+                      </mask>
+                      <path
+                        d="M15.03 0L16 0.8625L8 8L0 0.8625L0.965 0L8 6.27083L15.03 0Z"
+                        fill="#4769AC"
+                      />
+                      <path
+                        d="M15.03 0L21.6748 -7.47303L15.0194 -13.3909L8.37336 -7.46251L15.03 0ZM16 0.8625L22.6574 8.32436L31.0351 0.849873L22.6448 -6.61053L16 0.8625ZM8 8L1.34262 15.4619L8 21.4015L14.6574 15.4619L8 8ZM0 0.8625L-6.66399 -6.59345L-15.0135 0.86916L-6.65738 8.32436L0 0.8625ZM0.965 0L7.61901 -7.46487L0.956027 -13.4041L-5.69899 -7.45595L0.965 0ZM8 6.27083L1.34599 13.7357L8.00237 19.669L14.6566 13.7333L8 6.27083ZM8.38517 7.47303L9.35517 8.33553L22.6448 -6.61053L21.6748 -7.47303L8.38517 7.47303ZM9.34262 -6.59936L1.34262 0.538142L14.6574 15.4619L22.6574 8.32436L9.34262 -6.59936ZM14.6574 0.538142L6.65738 -6.59936L-6.65738 8.32436L1.34262 15.4619L14.6574 0.538142ZM6.66399 8.31845L7.62899 7.45595L-5.69899 -7.45595L-6.66399 -6.59345L6.66399 8.31845ZM-5.68901 7.46487L1.34599 13.7357L14.654 -1.19403L7.61901 -7.46487L-5.68901 7.46487ZM14.6566 13.7333L21.6866 7.46251L8.37336 -7.46251L1.34336 -1.19168L14.6566 13.7333Z"
+                        fill="white"
+                        mask="url(#path-1-inside-1_140_85)"
+                      />
+                    </svg>
+                  </a>
+                  <ul class="drop_down">
+                    <li><a href="">item 1</a></li>
+                    <li><a href="">item 2</a></li>
+                    <li><a href="">item 3</a></li>
+                    <li><a href="">item 4</a></li>
+                    <li><a href="">item 5</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#"
+                    >Heyvanların baxımı və müayinəsi
+                    <svg
+                      width="16"
+                      height="8"
+                      viewBox="0 0 16 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <mask id="path-1-inside-1_140_85" fill="white">
+                        <path
+                          d="M15.03 0L16 0.8625L8 8L0 0.8625L0.965 0L8 6.27083L15.03 0Z"
+                        />
+                      </mask>
+                      <path
+                        d="M15.03 0L16 0.8625L8 8L0 0.8625L0.965 0L8 6.27083L15.03 0Z"
+                        fill="#4769AC"
+                      />
+                      <path
+                        d="M15.03 0L21.6748 -7.47303L15.0194 -13.3909L8.37336 -7.46251L15.03 0ZM16 0.8625L22.6574 8.32436L31.0351 0.849873L22.6448 -6.61053L16 0.8625ZM8 8L1.34262 15.4619L8 21.4015L14.6574 15.4619L8 8ZM0 0.8625L-6.66399 -6.59345L-15.0135 0.86916L-6.65738 8.32436L0 0.8625ZM0.965 0L7.61901 -7.46487L0.956027 -13.4041L-5.69899 -7.45595L0.965 0ZM8 6.27083L1.34599 13.7357L8.00237 19.669L14.6566 13.7333L8 6.27083ZM8.38517 7.47303L9.35517 8.33553L22.6448 -6.61053L21.6748 -7.47303L8.38517 7.47303ZM9.34262 -6.59936L1.34262 0.538142L14.6574 15.4619L22.6574 8.32436L9.34262 -6.59936ZM14.6574 0.538142L6.65738 -6.59936L-6.65738 8.32436L1.34262 15.4619L14.6574 0.538142ZM6.66399 8.31845L7.62899 7.45595L-5.69899 -7.45595L-6.66399 -6.59345L6.66399 8.31845ZM-5.68901 7.46487L1.34599 13.7357L14.654 -1.19403L7.61901 -7.46487L-5.68901 7.46487ZM14.6566 13.7333L21.6866 7.46251L8.37336 -7.46251L1.34336 -1.19168L14.6566 13.7333Z"
+                        fill="white"
+                        mask="url(#path-1-inside-1_140_85)"
+                      />
+                    </svg>
+                  </a>
+                  <ul class="drop_down">
+                    <li><a href="">item 1</a></li>
+                    <li><a href="">item 2</a></li>
+                    <li><a href="">item 3</a></li>
+                    <li><a href="">item 4</a></li>
+                    <li><a href="">item 5</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#"
+                    >Heyvanlar üçün aktivitə
+                    <svg
+                      width="16"
+                      height="8"
+                      viewBox="0 0 16 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <mask id="path-1-inside-1_140_85" fill="white">
+                        <path
+                          d="M15.03 0L16 0.8625L8 8L0 0.8625L0.965 0L8 6.27083L15.03 0Z"
+                        />
+                      </mask>
+                      <path
+                        d="M15.03 0L16 0.8625L8 8L0 0.8625L0.965 0L8 6.27083L15.03 0Z"
+                        fill="#4769AC"
+                      />
+                      <path
+                        d="M15.03 0L21.6748 -7.47303L15.0194 -13.3909L8.37336 -7.46251L15.03 0ZM16 0.8625L22.6574 8.32436L31.0351 0.849873L22.6448 -6.61053L16 0.8625ZM8 8L1.34262 15.4619L8 21.4015L14.6574 15.4619L8 8ZM0 0.8625L-6.66399 -6.59345L-15.0135 0.86916L-6.65738 8.32436L0 0.8625ZM0.965 0L7.61901 -7.46487L0.956027 -13.4041L-5.69899 -7.45595L0.965 0ZM8 6.27083L1.34599 13.7357L8.00237 19.669L14.6566 13.7333L8 6.27083ZM8.38517 7.47303L9.35517 8.33553L22.6448 -6.61053L21.6748 -7.47303L8.38517 7.47303ZM9.34262 -6.59936L1.34262 0.538142L14.6574 15.4619L22.6574 8.32436L9.34262 -6.59936ZM14.6574 0.538142L6.65738 -6.59936L-6.65738 8.32436L1.34262 15.4619L14.6574 0.538142ZM6.66399 8.31845L7.62899 7.45595L-5.69899 -7.45595L-6.66399 -6.59345L6.66399 8.31845ZM-5.68901 7.46487L1.34599 13.7357L14.654 -1.19403L7.61901 -7.46487L-5.68901 7.46487ZM14.6566 13.7333L21.6866 7.46251L8.37336 -7.46251L1.34336 -1.19168L14.6566 13.7333Z"
+                        fill="white"
+                        mask="url(#path-1-inside-1_140_85)"
+                      />
+                    </svg>
+                  </a>
+                  <ul class="drop_down">
+                    <li><a href="">item 1</a></li>
+                    <li><a href="">item 2</a></li>
+                    <li><a href="">item 3</a></li>
+                    <li><a href="">item 4</a></li>
+                    <li><a href="">item 5</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="container">
+              <div class="slider_content">
+                <h1>
+                  Yüksək keyfiyyət & sərfəli qiymətə ev heyvanları üçün
+                  <span>yem axtarırsınız?</span>
+                </h1>
+                <button>Daxil Ol</button>
+                <div class="slider_dots">
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="container">
+              <div class="slider_content">
+                <h1>
+                  Yüksək keyfiyyət & sərfəli qiymətə ev heyvanları üçün
+                  <span>yem axtarırsınız?</span>
+                </h1>
+                <button>Daxil Ol</button>
+                <div class="slider_dots">
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="container">
+              <div class="slider_content">
+                <h1>
+                  Yüksək keyfiyyət & sərfəli qiymətə ev heyvanları üçün
+                  <span>yem axtarırsınız?</span>
+                </h1>
+                <button>Daxil Ol</button>
+                <div class="slider_dots">
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <!-- SECTION 1 -->
+
+        <h2 class="sec_topic">Heyvanlar üçün məhsullar</h2>
+
+        <div class="sec_one_container">
+          <svg
+            class="sec_one_left"
+            width="31"
+            height="30"
+            viewBox="0 0 31 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M30.9416 15C30.9416 12.0333 30.0625 9.13319 28.4154 6.66645C26.7684 4.19971 24.4273 2.27713 21.6883 1.14181C18.9493 0.00649871 15.9354 -0.290551 13.0277 0.288227C10.1201 0.867005 7.44917 2.29562 5.35283 4.3934C3.2565 6.49119 1.82889 9.16393 1.25051 12.0736C0.672134 14.9834 0.968978 17.9994 2.1035 20.7402C3.23803 23.4811 5.15928 25.8238 7.6243 27.472C10.0893 29.1203 12.9874 30 15.9521 30C17.921 30.0016 19.8709 29.6147 21.6902 28.8615C23.5096 28.1083 25.1627 27.0034 26.5549 25.6102C27.9472 24.217 29.0512 22.5628 29.8039 20.7422C30.5567 18.9216 30.9433 16.9703 30.9416 15ZM4.48945 15C4.48945 12.7313 5.16172 10.5136 6.42125 8.62728C7.68078 6.74096 9.47099 5.27074 11.5655 4.40256C13.66 3.53438 15.9648 3.30723 18.1883 3.74982C20.4118 4.19242 22.4543 5.28488 24.0574 6.88907C25.6604 8.49326 26.7521 10.5371 27.1944 12.7622C27.6367 14.9873 27.4097 17.2936 26.5421 19.3896C25.6746 21.4856 24.2054 23.277 22.3204 24.5374C20.4353 25.7978 18.2192 26.4706 15.9521 26.4706C14.4459 26.4736 12.954 26.179 11.5619 25.6036C10.1699 25.0282 8.90504 24.1834 7.84003 23.1177C6.77503 22.0519 5.93081 20.7862 5.35583 19.3932C4.78085 18.0001 4.48643 16.5072 4.48945 15ZM18.8618 20.0294L13.9241 15L18.95 9.97059C19.2719 9.64184 19.4512 9.19924 19.4489 8.73895C19.4466 8.27867 19.2628 7.83789 18.9376 7.51242C18.6123 7.18694 18.1719 7.00306 17.7119 7.00074C17.2519 6.99841 16.8096 7.17783 16.4811 7.5L11.4552 12.5294C11.1202 12.8568 10.854 13.248 10.6723 13.6798C10.4906 14.1117 10.397 14.5755 10.397 15.0441C10.397 15.5127 10.4906 15.9766 10.6723 16.4084C10.854 16.8403 11.1202 17.2314 11.4552 17.5588L16.4811 22.5882C16.6404 22.7555 16.8319 22.8886 17.0441 22.9795C17.2563 23.0705 17.4847 23.1174 17.7155 23.1174C17.9464 23.1174 18.1748 23.0705 18.387 22.9795C18.5992 22.8886 18.7907 22.7555 18.95 22.5882C19.5672 21.7941 19.5672 20.6471 18.8618 20.0294Z"
+              fill="#6B6161"
+              fill-opacity="0.59"
+            />
+          </svg>
+
+          <div class="sec_one" id="sec_one_slider">
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo1.png" alt="" />
+              <p>İtlər üçün</p>
+            </div>
+            <div class="sec_one_box sec_one_active">
+              <img src="/imgs/sec_one_photo2.png" alt="" />
+              <p>Pişiklər üçün</p>
+            </div>
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo3.png" alt="" />
+              <p>Dovşanlar üçün</p>
+            </div>
+
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo1.png" alt="" />
+              <p>İtlər üçün</p>
+            </div>
+            <div class="sec_one_box sec_one_active">
+              <img src="/imgs/sec_one_photo2.png" alt="" />
+              <p>Pişiklər üçün</p>
+            </div>
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo3.png" alt="" />
+              <p>Dovşanlar üçün</p>
+            </div>
+
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo1.png" alt="" />
+              <p>İtlər üçün</p>
+            </div>
+            <div class="sec_one_box sec_one_active">
+              <img src="/imgs/sec_one_photo2.png" alt="" />
+              <p>Pişiklər üçün</p>
+            </div>
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo3.png" alt="" />
+              <p>Dovşanlar üçün</p>
+            </div>
+
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo1.png" alt="" />
+              <p>İtlər üçün</p>
+            </div>
+            <div class="sec_one_box sec_one_active">
+              <img src="/imgs/sec_one_photo2.png" alt="" />
+              <p>Pişiklər üçün</p>
+            </div>
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo3.png" alt="" />
+              <p>Dovşanlar üçün</p>
+            </div>
+
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo1.png" alt="" />
+              <p>İtlər üçün</p>
+            </div>
+            <div class="sec_one_box sec_one_active">
+              <img src="/imgs/sec_one_photo2.png" alt="" />
+              <p>Pişiklər üçün</p>
+            </div>
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo3.png" alt="" />
+              <p>Dovşanlar üçün</p>
+            </div>
+
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo1.png" alt="" />
+              <p>İtlər üçün</p>
+            </div>
+            <div class="sec_one_box sec_one_active">
+              <img src="/imgs/sec_one_photo2.png" alt="" />
+              <p>Pişiklər üçün</p>
+            </div>
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo3.png" alt="" />
+              <p>Dovşanlar üçün</p>
+            </div>
+
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo1.png" alt="" />
+              <p>İtlər üçün</p>
+            </div>
+            <div class="sec_one_box sec_one_active">
+              <img src="/imgs/sec_one_photo2.png" alt="" />
+              <p>Pişiklər üçün</p>
+            </div>
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo3.png" alt="" />
+              <p>Dovşanlar üçün</p>
+            </div>
+
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo1.png" alt="" />
+              <p>İtlər üçün</p>
+            </div>
+            <div class="sec_one_box sec_one_active">
+              <img src="/imgs/sec_one_photo2.png" alt="" />
+              <p>Pişiklər üçün</p>
+            </div>
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo3.png" alt="" />
+              <p>Dovşanlar üçün</p>
+            </div>
+
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo1.png" alt="" />
+              <p>İtlər üçün</p>
+            </div>
+            <div class="sec_one_box sec_one_active">
+              <img src="/imgs/sec_one_photo2.png" alt="" />
+              <p>Pişiklər üçün</p>
+            </div>
+            <div class="sec_one_box">
+              <img src="/imgs/sec_one_photo3.png" alt="" />
+              <p>Dovşanlar üçün</p>
+            </div>
+          </div>
+
+          <svg
+            class="sec_one_right"
+            width="31"
+            height="30"
+            viewBox="0 0 31 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.0639726 14.6406C-0.00708145 17.6064 0.802332 20.5268 2.38986 23.0323C3.97738 25.5378 6.27172 27.516 8.98273 28.7167C11.6937 29.9174 14.6997 30.2866 17.6204 29.7777C20.5411 29.2689 23.2454 27.9047 25.3914 25.8578C27.5374 23.8109 29.0286 21.1732 29.6765 18.2782C30.3244 15.3832 30.0999 12.3609 29.0313 9.59362C27.9628 6.82632 26.0982 4.43824 23.6733 2.73137C21.2485 1.02451 18.3723 0.0755224 15.4085 0.00441918C13.4402 -0.0444271 11.4816 0.295573 9.6447 1.00496C7.80783 1.71436 6.12876 2.77922 4.70356 4.13863C3.27836 5.49804 2.13499 7.12531 1.33888 8.92735C0.542771 10.7294 0.109539 12.6708 0.0639726 14.6406ZM26.5086 15.275C26.4543 17.543 25.7291 19.744 24.4247 21.5995C23.1204 23.4551 21.2955 24.882 19.1807 25.6997C17.066 26.5173 14.7565 26.6892 12.5442 26.1934C10.3319 25.6976 8.31622 24.5564 6.75202 22.9143C5.18783 21.2721 4.14538 19.2026 3.75651 16.9676C3.36764 14.7326 3.64981 12.4323 4.56734 10.3578C5.48487 8.28319 6.99655 6.52749 8.91122 5.31266C10.8259 4.09783 13.0575 3.47844 15.324 3.53281C16.8298 3.56591 18.3142 3.89624 19.6921 4.50484C21.07 5.11344 22.3142 5.98833 23.3534 7.07931C24.3926 8.17029 25.2062 9.45588 25.7477 10.8623C26.2891 12.2687 26.5477 13.7683 26.5086 15.275ZM12.2608 9.90233L17.0767 15.0487L11.9317 19.9561C11.602 20.2771 11.4122 20.7152 11.4035 21.1754C11.3948 21.6357 11.5679 22.0807 11.8853 22.4139C12.2026 22.7471 12.6386 22.9415 13.0983 22.9548C13.5581 22.9682 14.0046 22.7994 14.3407 22.4852L19.4857 17.5778C19.8284 17.2585 20.1039 16.8739 20.2959 16.4465C20.4879 16.0191 20.5926 15.5576 20.6038 15.0892C20.615 14.6208 20.5326 14.1548 20.3612 13.7187C20.1899 13.2826 19.9332 12.8852 19.6061 12.5498L14.7021 7.40135C14.5469 7.23036 14.3586 7.09269 14.1487 6.99667C13.9387 6.90065 13.7115 6.84828 13.4807 6.84275C13.2499 6.83721 13.0204 6.87862 12.8061 6.96446C12.5918 7.0503 12.3972 7.17879 12.2339 7.34214C11.5979 8.12122 11.5704 9.26795 12.2608 9.90233Z"
+              fill="#6B6161"
+              fill-opacity="0.59"
+            />
+          </svg>
+        </div>
+      </section>
+
+      <!-- SECTION 1 ENDS  -->
+
+      <section>
+        <!-- SECTION 2  -->
+        <h2 class="sec_topic">Yeni & Trend</h2>
+
+        <div class="container">
+          <div class="sec_two_container"></div>
+          <a class="sec_two_others" href="#">Digər</a>
+        </div>
+      </section>
+
+      <!-- SECTION 2 ENDS! -->
+
+      <!-- SECTION 3  -->
+      <section>
+        <h2 class="sec_topic">Trend məhsullar</h2>
+
+        <div class="container">
+          <div class="sec_three_category">
+            <div class="sec_three_cat_child cat_child_active" data-name="all">
+              <span>Butun mehsullar</span>
+            </div>
+            <div class="sec_three_cat_child" data-name="yeni">
+              <span>Yeni məhsullar</span>
+            </div>
+            <div class="sec_three_cat_child" data-name="sechilen">
+              <span>Seçilən məhsullar</span>
+            </div>
+          </div>
+
+          <div class="sec_three_container">
+            <!-- script js data json -->
+          </div>
+        </div>
+
+        <!-- SECTION 3 ENDS  -->
+      </section>
+
+      <!-- SECTION 4  -->
+      <section>
+        <h2 class="sec_topic">Xidmətlərimiz</h2>
+
+        <div class="sec_four_bg">
+          <div class="sec_four_container">
+            <svg
+              class="left_icon"
+              width="31"
+              height="30"
+              viewBox="0 0 31 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M30.9416 15C30.9416 12.0333 30.0625 9.13319 28.4154 6.66645C26.7684 4.19971 24.4273 2.27713 21.6883 1.14181C18.9493 0.00649871 15.9354 -0.290551 13.0277 0.288227C10.1201 0.867005 7.44917 2.29562 5.35283 4.3934C3.2565 6.49119 1.82889 9.16393 1.25051 12.0736C0.672134 14.9834 0.968978 17.9994 2.1035 20.7402C3.23803 23.4811 5.15928 25.8238 7.6243 27.472C10.0893 29.1203 12.9874 30 15.9521 30C17.921 30.0016 19.8709 29.6147 21.6902 28.8615C23.5096 28.1083 25.1627 27.0034 26.5549 25.6102C27.9472 24.217 29.0512 22.5628 29.8039 20.7422C30.5567 18.9216 30.9433 16.9703 30.9416 15ZM4.48945 15C4.48945 12.7313 5.16172 10.5136 6.42125 8.62728C7.68078 6.74096 9.47099 5.27074 11.5655 4.40256C13.66 3.53438 15.9648 3.30723 18.1883 3.74982C20.4118 4.19242 22.4543 5.28488 24.0574 6.88907C25.6604 8.49326 26.7521 10.5371 27.1944 12.7622C27.6367 14.9873 27.4097 17.2936 26.5421 19.3896C25.6746 21.4856 24.2054 23.277 22.3204 24.5374C20.4353 25.7978 18.2192 26.4706 15.9521 26.4706C14.4459 26.4736 12.954 26.179 11.5619 25.6036C10.1699 25.0282 8.90504 24.1834 7.84003 23.1177C6.77503 22.0519 5.93081 20.7862 5.35583 19.3932C4.78085 18.0001 4.48643 16.5072 4.48945 15ZM18.8618 20.0294L13.9241 15L18.95 9.97059C19.2719 9.64184 19.4512 9.19924 19.4489 8.73895C19.4466 8.27867 19.2628 7.83789 18.9376 7.51242C18.6123 7.18694 18.1719 7.00306 17.7119 7.00074C17.2519 6.99841 16.8096 7.17783 16.4811 7.5L11.4552 12.5294C11.1202 12.8568 10.854 13.248 10.6723 13.6798C10.4906 14.1117 10.397 14.5755 10.397 15.0441C10.397 15.5127 10.4906 15.9766 10.6723 16.4084C10.854 16.8403 11.1202 17.2314 11.4552 17.5588L16.4811 22.5882C16.6404 22.7555 16.8319 22.8886 17.0441 22.9795C17.2563 23.0705 17.4847 23.1174 17.7155 23.1174C17.9464 23.1174 18.1748 23.0705 18.387 22.9795C18.5992 22.8886 18.7907 22.7555 18.95 22.5882C19.5672 21.7941 19.5672 20.6471 18.8618 20.0294Z"
+                fill="#6B6161"
+                fill-opacity="0.59"
+              />
+            </svg>
+            <div class="sec_four" id="services_slider">
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon1.svg" alt="" />
+                <p>Heyvanların catdırılması</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon2.svg" alt="" />
+                <p>Baytarlıq xidməti</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon3.svg" alt="" />
+                <p>Peyvənd baxımı</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon4.svg" alt="" />
+                <p>Sağlam qidalar</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon1.svg" alt="" />
+                <p>Heyvanların catdırılması</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon2.svg" alt="" />
+                <p>Baytarlıq xidməti</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon3.svg" alt="" />
+                <p>Peyvənd baxımı</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon4.svg" alt="" />
+                <p>Sağlam qidalar</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon1.svg" alt="" />
+                <p>Heyvanların catdırılması</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon2.svg" alt="" />
+                <p>Baytarlıq xidməti</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon3.svg" alt="" />
+                <p>Peyvənd baxımı</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon4.svg" alt="" />
+                <p>Sağlam qidalar</p>
+              </div>
+
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon1.svg" alt="" />
+                <p>Heyvanların catdırılması</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon2.svg" alt="" />
+                <p>Baytarlıq xidməti</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon3.svg" alt="" />
+                <p>Peyvənd baxımı</p>
+              </div>
+              <div class="sec_four_box">
+                <img src="/imgs/sec_four_icon4.svg" alt="" />
+                <p>Sağlam qidalar</p>
+              </div>
+            </div>
+            <svg
+              class="right_icon"
+              width="31"
+              height="30"
+              viewBox="0 0 31 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.0639726 14.6406C-0.00708145 17.6064 0.802332 20.5268 2.38986 23.0323C3.97738 25.5378 6.27172 27.516 8.98273 28.7167C11.6937 29.9174 14.6997 30.2866 17.6204 29.7777C20.5411 29.2689 23.2454 27.9047 25.3914 25.8578C27.5374 23.8109 29.0286 21.1732 29.6765 18.2782C30.3244 15.3832 30.0999 12.3609 29.0313 9.59362C27.9628 6.82632 26.0982 4.43824 23.6733 2.73137C21.2485 1.02451 18.3723 0.0755224 15.4085 0.00441918C13.4402 -0.0444271 11.4816 0.295573 9.6447 1.00496C7.80783 1.71436 6.12876 2.77922 4.70356 4.13863C3.27836 5.49804 2.13499 7.12531 1.33888 8.92735C0.542771 10.7294 0.109539 12.6708 0.0639726 14.6406ZM26.5086 15.275C26.4543 17.543 25.7291 19.744 24.4247 21.5995C23.1204 23.4551 21.2955 24.882 19.1807 25.6997C17.066 26.5173 14.7565 26.6892 12.5442 26.1934C10.3319 25.6976 8.31622 24.5564 6.75202 22.9143C5.18783 21.2721 4.14538 19.2026 3.75651 16.9676C3.36764 14.7326 3.64981 12.4323 4.56734 10.3578C5.48487 8.28319 6.99655 6.52749 8.91122 5.31266C10.8259 4.09783 13.0575 3.47844 15.324 3.53281C16.8298 3.56591 18.3142 3.89624 19.6921 4.50484C21.07 5.11344 22.3142 5.98833 23.3534 7.07931C24.3926 8.17029 25.2062 9.45588 25.7477 10.8623C26.2891 12.2687 26.5477 13.7683 26.5086 15.275ZM12.2608 9.90233L17.0767 15.0487L11.9317 19.9561C11.602 20.2771 11.4122 20.7152 11.4035 21.1754C11.3948 21.6357 11.5679 22.0807 11.8853 22.4139C12.2026 22.7471 12.6386 22.9415 13.0983 22.9548C13.5581 22.9682 14.0046 22.7994 14.3407 22.4852L19.4857 17.5778C19.8284 17.2585 20.1039 16.8739 20.2959 16.4465C20.4879 16.0191 20.5926 15.5576 20.6038 15.0892C20.615 14.6208 20.5326 14.1548 20.3612 13.7187C20.1899 13.2826 19.9332 12.8852 19.6061 12.5498L14.7021 7.40135C14.5469 7.23036 14.3586 7.09269 14.1487 6.99667C13.9387 6.90065 13.7115 6.84828 13.4807 6.84275C13.2499 6.83721 13.0204 6.87862 12.8061 6.96446C12.5918 7.0503 12.3972 7.17879 12.2339 7.34214C11.5979 8.12122 11.5704 9.26795 12.2608 9.90233Z"
+                fill="#6B6161"
+                fill-opacity="0.59"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+      <h2 class="sec_topic"></h2>
+    </main>
+
+    <footer>
+      <div class="footer_bg">
+        <div class="container">
+          <div class="footer_one">
+            <img src="/imgs/sec_five_photo1.png" alt="" />
+            <img src="/imgs/sec_five_photo2.png" alt="" />
+            <img src="/imgs/sec_five_photo3.png" alt="" />
+            <img src="/imgs/sec_five_photo4.png" alt="" />
+            <img src="/imgs/sec_five_photo5.png" alt="" />
+          </div>
+        </div>
+
+        <hr />
+        <div class="container">
+          <div class="footer_two_container">
+            <ul class="footer_two_nav">
+              <li><a href="">Brendlər</a></li>
+              <li><a href="">Bizimlə əlaqə saxlayın</a></li>
+              <li><a href="">Sifarişlərinizi izləyin</a></li>
+            </ul>
+            <div class="footer_two_inp">
+              <input type="text" />
+              <button>
+                <svg
+                  width="23"
+                  height="20"
+                  viewBox="0 0 23 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M22.3215 2.85338L15.2988 18.6217C14.8866 19.4835 14.018 20 13.0757 20C11.6604 20 10.7192 18.9626 10.7192 17.8847V10.7393H2.86813C1.74235 10.7393 0.774097 10.0109 0.557185 8.99902C0.339439 7.98852 0.934474 7.01844 1.97644 6.58774L19.2067 0.160955C20.0832 -0.168827 21.0936 0.0177785 21.764 0.632522C22.4785 1.12565 22.6846 2.04902 22.3215 2.85338Z"
+                    fill="black"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="footer_two_apps">
+              <a href=""><img src="/imgs/google.png" alt="" /></a>
+              <a href=""><img src="/imgs/apple.png" alt="" /></a>
+            </div>
+            <div class="footer_two_socials">
+              <a href="">
+                <svg
+                  width="26"
+                  height="25"
+                  viewBox="0 0 26 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M22.1075 0C23.7921 0 25.1598 1.36865 25.1598 3.05439V21.9456C25.1598 23.6313 23.7921 25 22.1075 25H3.2294C1.54483 25 0.177124 23.6313 0.177124 21.9456V3.05439C0.177124 1.36865 1.54478 0 3.2294 0L22.1075 0ZM12.6685 3.95508C10.3494 3.95508 10.0586 3.96489 9.14785 4.00649C8.23896 4.048 7.61825 4.19243 7.07507 4.40371C6.51355 4.62207 6.03736 4.91426 5.56265 5.38926C5.08793 5.86431 4.79594 6.34087 4.57773 6.90273C4.36665 7.44629 4.22232 8.06743 4.18079 8.97695C4.13927 9.88833 4.12946 10.1793 4.12946 12.5C4.12946 14.8207 4.13927 15.1117 4.18079 16.023C4.22232 16.9326 4.36665 17.5537 4.57773 18.0973C4.79594 18.6591 5.08793 19.1357 5.56265 19.6107C6.03736 20.0858 6.51355 20.378 7.07507 20.5963C7.61825 20.8076 8.23896 20.952 9.14785 20.9935C10.0586 21.0351 10.3494 21.0449 12.6685 21.0449C14.9875 21.0449 15.2783 21.0351 16.1891 20.9935C17.098 20.952 17.7187 20.8076 18.2618 20.5963C18.8233 20.378 19.2996 20.0858 19.7743 19.6107C20.249 19.1357 20.541 18.6591 20.7592 18.0973C20.9703 17.5537 21.1146 16.9326 21.1561 16.023C21.1976 15.1117 21.2075 14.8207 21.2075 12.5C21.2075 10.1793 21.1976 9.88833 21.1561 8.97695C21.1146 8.06743 20.9703 7.44629 20.7592 6.90273C20.541 6.34087 20.249 5.86431 19.7743 5.38926C19.2996 4.91426 18.8233 4.62207 18.2618 4.40371C17.7187 4.19243 17.098 4.048 16.1891 4.00649C15.2783 3.96489 14.9875 3.95508 12.6685 3.95508ZM12.6685 5.49473C14.9485 5.49473 15.2185 5.50342 16.1189 5.54453C16.9515 5.58257 17.4036 5.72178 17.7045 5.83872C18.1031 5.99375 18.3875 6.17895 18.6864 6.47793C18.9852 6.77695 19.1702 7.06162 19.3251 7.46045C19.442 7.76157 19.5811 8.21401 19.6191 9.04712C19.6602 9.94814 19.6689 10.2184 19.6689 12.5C19.6689 14.7816 19.6602 15.0519 19.6191 15.9529C19.5811 16.786 19.442 17.2384 19.3251 17.5396C19.1702 17.9384 18.9852 18.223 18.6864 18.5221C18.3875 18.8211 18.1031 19.0063 17.7045 19.1613C17.4036 19.2783 16.9515 19.4175 16.1189 19.4555C15.2187 19.4966 14.9486 19.5053 12.6685 19.5053C10.3883 19.5053 10.1183 19.4966 9.21797 19.4555C8.38544 19.4175 7.93331 19.2783 7.6324 19.1613C7.2338 19.0063 6.94938 18.8211 6.65056 18.5221C6.35175 18.223 6.16667 17.9384 6.0118 17.5396C5.89489 17.2384 5.75577 16.786 5.71776 15.9529C5.67668 15.0519 5.66799 14.7816 5.66799 12.5C5.66799 10.2184 5.67668 9.94814 5.71776 9.04712C5.75577 8.21401 5.89489 7.76157 6.0118 7.46045C6.16667 7.06162 6.35175 6.77695 6.65056 6.47793C6.94938 6.17895 7.2338 5.99375 7.6324 5.83872C7.93331 5.72178 8.38544 5.58257 9.21797 5.54453C10.1184 5.50342 10.3884 5.49473 12.6685 5.49473ZM12.6685 8.11206C10.2467 8.11206 8.28356 10.0766 8.28356 12.5C8.28356 14.9234 10.2467 16.8879 12.6685 16.8879C15.0902 16.8879 17.0534 14.9234 17.0534 12.5C17.0534 10.0766 15.0902 8.11206 12.6685 8.11206ZM12.6685 15.3483C11.0965 15.3483 9.82214 14.0731 9.82214 12.5C9.82214 10.9269 11.0965 9.65171 12.6685 9.65171C14.2405 9.65171 15.5148 10.9269 15.5148 12.5C15.5148 14.0731 14.2405 15.3483 12.6685 15.3483ZM18.2513 7.93872C18.2513 8.50503 17.7925 8.96406 17.2266 8.96406C16.6607 8.96406 16.2019 8.50503 16.2019 7.93872C16.2019 7.37241 16.6607 6.91333 17.2266 6.91333C17.7925 6.91333 18.2513 7.37241 18.2513 7.93872Z"
+                    fill="#979797"
+                  />
+                </svg>
+              </a>
+              <a href="">
+                <svg
+                  width="26"
+                  height="25"
+                  viewBox="0 0 26 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21.6219 0H3.67183C2.73926 0 1.84486 0.370722 1.18542 1.03061C0.525985 1.69052 0.155518 2.58552 0.155518 3.51875V21.4812C0.155518 22.4145 0.525985 23.3095 1.18542 23.9694C1.84486 24.6292 2.73926 25 3.67183 25H11.8412V15.875H8.75268V12.3156H11.8412V9.69376C11.8412 8.20782 12.2518 7.05313 13.0731 6.23282C13.8944 5.41094 15.0077 4.99844 16.4145 4.99844C17.8229 4.99844 18.7348 5.05313 19.1517 5.15626V8.32501H17.2749C16.5972 8.32501 16.135 8.46876 15.8868 8.75626C15.6401 9.04219 15.5167 9.47344 15.5167 10.0469V12.3156H19.0346L18.5662 15.875H15.5167V25H21.6219C22.5545 25 23.4489 24.6292 24.1083 23.9694C24.7678 23.3095 25.1382 22.4145 25.1382 21.4812V3.51875C25.1382 2.58552 24.7678 1.69052 24.1083 1.03061C23.4489 0.370722 22.5545 0 21.6219 0Z"
+                    fill="#979797"
+                  />
+                </svg>
+              </a>
+              <a href="">
+                <svg
+                  width="26"
+                  height="25"
+                  viewBox="0 0 26 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21.9931 25H3.25613C1.53233 25 0.133301 23.6 0.133301 21.875V3.125C0.133301 1.4 1.53233 0 3.25613 0H21.9931C23.7169 0 25.116 1.4 25.116 3.125V21.875C25.116 23.6 23.7169 25 21.9931 25ZM9.72664 18.85C15.6163 18.85 18.8391 13.9625 18.8391 9.73125C18.8391 9.59375 18.8391 9.45625 18.8328 9.31875C19.4574 8.86875 20.0008 8.3 20.4317 7.65625C19.8571 7.9125 19.2388 8.08125 18.5892 8.1625C19.2513 7.76875 19.7572 7.1375 20.0008 6.3875C19.3824 6.75625 18.6954 7.01875 17.9647 7.1625C17.3776 6.5375 16.5469 6.15 15.6288 6.15C13.8613 6.15 12.4248 7.5875 12.4248 9.35625C12.4248 9.60625 12.456 9.85 12.506 10.0875C9.84531 9.95625 7.48445 8.675 5.9043 6.7375C5.62949 7.2125 5.47335 7.7625 5.47335 8.35C5.47335 9.4625 6.0417 10.4438 6.89736 11.0188C6.37272 11 5.87931 10.8562 5.44836 10.6187V10.6625C5.44836 12.2125 6.55385 13.5125 8.01533 13.8063C7.74677 13.8813 7.46571 13.9187 7.17217 13.9187C6.96606 13.9187 6.7662 13.9 6.57258 13.8625C6.97855 15.1375 8.16523 16.0625 9.56426 16.0875C8.46502 16.95 7.08473 17.4625 5.58577 17.4625C5.3297 17.4625 5.07362 17.45 4.8238 17.4187C6.23532 18.3188 7.92165 18.85 9.72664 18.85Z"
+                    fill="#979797"
+                  />
+                </svg>
+              </a>
+              <a href="">
+                <svg
+                  width="26"
+                  height="25"
+                  viewBox="0 0 26 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M22.0422 0C23.7268 0 25.0945 1.36865 25.0945 3.05439V21.9456C25.0945 23.6313 23.7268 25 22.0422 25H3.16409C1.47952 25 0.111816 23.6313 0.111816 21.9456V3.05439C0.111816 1.36865 1.47947 0 3.16409 0H22.0422V0ZM21.0191 8.57568C20.8172 7.81939 20.222 7.22378 19.4662 7.02168C18.0962 6.6543 12.6031 6.6543 12.6031 6.6543C12.6031 6.6543 7.11013 6.6543 5.74009 7.02168C4.98446 7.22378 4.38917 7.81939 4.18716 8.57568C3.82018 9.94653 3.82018 12.8067 3.82018 12.8067C3.82018 12.8067 3.82018 15.6669 4.18716 17.0376C4.38917 17.7939 4.98446 18.3896 5.74009 18.5917C7.11013 18.959 12.6031 18.959 12.6031 18.959C12.6031 18.959 18.0962 18.959 19.4662 18.5917C20.222 18.3896 20.8172 17.7939 21.0191 17.0376C21.3861 15.6669 21.3861 12.8067 21.3861 12.8067C21.3861 12.8067 21.3861 9.94653 21.0191 8.57568ZM10.8465 15.4435V10.17L15.4102 12.8067L10.8465 15.4435Z"
+                    fill="#979797"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
